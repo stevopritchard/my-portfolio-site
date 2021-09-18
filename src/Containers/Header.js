@@ -3,9 +3,6 @@ import AppBar from '@material-ui/core/AppBar'
 import { makeStyles } from '@material-ui/core/styles'
 import { useState } from 'react'
 import { Toolbar, IconButton, Typography, Button, Link } from '@material-ui/core'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -55,7 +52,7 @@ export default function Header() {
                         <Button href='#aboutMe' color="inherit">
                             About Me
                         </Button>
-                        <Button aria-control="simple-menu" aria-haspopup="true" onClick={handleClick} color="inherit">
+                        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} color="inherit">
                             Projects
                         </Button>
                     <Menu
