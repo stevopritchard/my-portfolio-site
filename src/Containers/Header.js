@@ -13,6 +13,7 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 const projListArray = [
+    {name: 'Invoice Parser',id: '#invoiceParser'},
     {name: 'Blockchain app',id: '#blockchain'}, 
     {name: '¡Conjugado!', id:'#conjugado'}, 
     {name:'Weather app', id: '#weather'}, 
@@ -58,9 +59,8 @@ export default function Header(props) {
                     <Box sx={{flexGrow: 1}} />
                     <Box>
                         <Button 
-                            // href='#aboutMe' 
-                            // color="inherit"
                             onClick={props.scrollToTop}
+                            style={{fontWeight: 500}}
                         >
                             About Me
                         </Button>
@@ -68,7 +68,7 @@ export default function Header(props) {
                             aria-controls="simple-menu" 
                             aria-haspopup="true" 
                             onClick={handleClick} 
-                            // color="inherit"
+                            style={{fontWeight: 500}}
                         >
                             Projects
                         </Button>

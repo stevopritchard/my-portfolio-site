@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import { Divider, Typography, SvgIcon } from '@material-ui/core';
+import { Grid, Divider, Typography, SvgIcon } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faNodeJs, faHtml5, faCss3, faJs} from '@fortawesome/free-brands-svg-icons';
 import {ReactComponent as Expressjs } from '../expressjs-icon.svg';
@@ -196,8 +196,8 @@ const Popover2 = () => {
     <Box>
       <Box>
         <Tabs value={activeTab} onChange={handleTabChange} aria-label="simple table" centered={true}>
-          <Tab label="Front-End" {...a11yProps(0)} />
-          <Tab label="Back-End" {...a11yProps(1)} />
+          <Tab style={{ fontWeight: 500 }} label="Front-End" {...a11yProps(0)} />
+          <Tab style={{ fontWeight: 500 }} label="Back-End" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel 
@@ -246,7 +246,7 @@ export default function AboutMe() {
     return (
       <Container className={classes.mainArea} disableGutters fixed>
         <Box  display='flex' flexDirection='row' justifyContent='center' paddingTop='2em' paddingBottom='2em'>
-            <Typography variant="h2" style={{fontWeight: 600}}>Stephen Pritchard</Typography>
+            <Typography variant="h2" align='center' style={{fontWeight: 600}}>Stephen Pritchard</Typography>
         </Box>
         <Typography variant="body1" align='center'>
           An aspiring full stack developer looking for a new challenge! {<br/>}
@@ -265,47 +265,50 @@ export default function AboutMe() {
             <Typography variant="h5" style={{fontWeight: 'bold'}}>Node.js</Typography>
           </Box>
         </Box>
-        <Box paddingTop='3em' display='flex' flexDirection='row' justifyContent='space-around'>
-          <Button
-            aria-describedby={id1}
-            className={classes.button}
-            onClick={handleClick1}
-            variant="outlined"
-          >
-            <Typography style={{fontSize:'0.9em'}}>The rest of my skills...</Typography>
-          </Button>
-          <Button
-            aria-describedby={id2}
-            className={classes.button}
-            onClick={handleClick2}
-            variant="outlined"
-          >
-            <Typography style={{fontSize:'0.9em'}}>...and where I got them.</Typography>
-          </Button>
+        <Box paddingTop='3em' display='flex' flexWrap='wrap' flexDirection='row' justifyContent='space-around'>
+        <Grid container spacing={2} >
+          <Grid item xs={12} sm={6} md={6} style={{display: 'flex', justifyContent: 'center'}}>
+            <Button
+              aria-describedby={id1}
+              className={classes.button}
+              onClick={handleClick1}
+              variant="outlined"
+            >
+              <Typography style={{fontSize:'0.7em', fontWeight: 500}}>See the rest of my skills...</Typography>
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6} style={{display: 'flex', justifyContent: 'center'}}>
+            <Button
+              aria-describedby={id2}
+              className={classes.button}
+              onClick={handleClick2}
+              variant="outlined"
+            >
+              <Typography style={{fontSize:'0.7em', fontWeight: 500}}>...and where I got them.</Typography>
+            </Button>
+          </Grid>
+            <Popover
+              id={id1}
+              open={open1}
+              anchorEl={anchorEl1.anchorEl}
+              onClose={() => setAnchorEl1({ ...anchorEl1, anchorEl: null})}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
+              transformOrigin={{vertical: 'top', horizontal: 'center'}}
+            >
+              {anchorEl1.child}
+            </Popover>
 
-          <Popover
-            id={id1}
-            open={open1}
-            anchorEl={anchorEl1.anchorEl}
-            onClose={() => setAnchorEl1({ ...anchorEl1, anchorEl: null})}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
-            transformOrigin={{vertical: 'top', horizontal: 'center'}}
-          >
-            {anchorEl1.child}
-          </Popover>
-
-          <Popover
-            id={id2}
-            open={open2}
-            anchorEl={anchorEl2.anchorEl}
-            onClose={() => setAnchorEl2({ ...anchorEl2, anchorEl: null})}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
-            transformOrigin={{vertical: 'top', horizontal: 'center'}}
-          >
-            {anchorEl2.child}
-          </Popover>
-
-        </Box><Box display='flex' flexDirection='row' justifyContent='space-around'>
+            <Popover
+              id={id2}
+              open={open2}
+              anchorEl={anchorEl2.anchorEl}
+              onClose={() => setAnchorEl2({ ...anchorEl2, anchorEl: null})}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
+              transformOrigin={{vertical: 'top', horizontal: 'center'}}
+            >
+              {anchorEl2.child}
+            </Popover>
+        </Grid>
         </Box>
       </Container>
     )

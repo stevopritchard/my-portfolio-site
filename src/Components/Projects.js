@@ -14,10 +14,19 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const projArray = [
     {
+        name: "Invoice Parser", 
+        id:"invoiceParser", 
+        image:"project-img/invoice_parser.png",
+        description:"An automated invoice submission app. Invoices are uploaded via drag 'n' drop to an AWS Textract endpoint which reads the document. The returned data is checked against the client's purchase orders on their BrightPearl CRM endpoint, and any matches are saved to a MongodDB collection.",
+        github1:"https://github.com/stevopritchard/Invoice-Parser-client",
+        github2: "https://github.com/stevopritchard/Invoice-Parser-server",
+        url:"https://radiant-crag-07404.herokuapp.com/"
+    }, 
+    {
         name: "Blockchain app", 
         id:"blockchain", 
         image:"project-img/blockchain.png",
-        description:"I built this as a submission for a project challenge on the Complete Web Developer community. The only third party library used for this project was Material Kit for styling. I took advantage of ES6 class contructors, which I had previously only used in building class-based React components.",
+        description:"I built this as a submission for a project challenge on the Complete Web Developer community. The only third party library used for this project was Material Kit for styling. I took advantage of ES6 class constructors, which I had previously only used in building class-based React components.",
         github1:"https://github.com/stevopritchard/Challenge-1-Blockchain",
         github2: null,
         url:"https://stevopritchard.github.io/Challenge-1-Blockchain/"
@@ -26,7 +35,7 @@ const projArray = [
         name: '¡Conjugado!', 
         id:'conjugado', 
         image:"project-img/conjugado.png",
-        description:"This app took what I had learned from my previous project to build something that would be useful to my Spanish studies.",
+        description:"This project was an opportunity to build something that would be useful to my Spanish studies. Verbs are found via the search bar, and each verb offers a full conjugation table and can be selected as a 'favourite' so that it appears onscreen when you next login. There is also an accompanying practise section that allows you to test your knowledge against a chosen combination of tenses.",
         github1:"https://github.com/stevopritchard/conjugation_frontend",
         github2: "https://github.com/stevopritchard/conjugation_backend",
         url:"https://conjugado-frontend.herokuapp.com/"
@@ -35,7 +44,7 @@ const projArray = [
         name:'Weather app', 
         id: 'weather', 
         image:"project-img/weather.png",
-        description:"A project from my Complete Node Developer application that utilised a geolocation API to deliver location-accurate weather data.",
+        description:"A application that I built while studying the Complete Node Developer course. It utilises Mapbox and Weatherstack REST APIs to deliver a location-accurate weather forecast.",
         github1:"https://github.com/stevopritchard/node_weather_website",
         github2: null,
         url:"https://pritchard-node-weather-app.herokuapp.com/"
@@ -44,7 +53,7 @@ const projArray = [
         name:'Woofers', 
         id:'woofers', 
         image:"project-img/woofers.png",
-        description: "My first project for a client. A single-page React app that uses libraries React-Router-DOM and react-carousel and Google's Maps Embed API.",
+        description: "My first project for a client. A single-page React app that uses React-Router-DOM and the react-carousel and react-image-lightbox packages and Google's Maps Embed API.",
         github1:"https://github.com/stevopritchard/woofersv2",
         github2: null,
         url:"https://www.woofersbristol.co.uk/"
@@ -53,7 +62,7 @@ const projArray = [
         name:'Smart Brain', 
         id:'smartBrain', 
         image:"project-img/smartbrain.png",
-        description: "The final project of the Complete Web Developer course taught a lot of things including using third-party libraries, making API calls and setting up an SQL database",
+        description: "The final project of the Complete Web Developer course brought together a lot of aspects that I had previously covered as separate concepts, including using third-party libraries with Node.js, REST operations and setting up an SQL database.",
         github1:"https://github.com/stevopritchard/facerecognitionbrain",
         github2: "https://github.com/stevopritchard/SmartBrain-API",
         url:"https://smart-brain--front-end.herokuapp.com/"
@@ -67,24 +76,15 @@ const useStyles = makeStyles({
         flexDirection: 'row',
         width: '100%',
         height: '100%',
-        // paddingBottom: '120px',
     },
     projects: {
-        overflowY: 'scroll',
-        scrollSnapType: 'y mandatory',
-        scrollPaddingTop: '15vh',
         flex: '1 1 auto',
         display: 'flex',
         flexDirection: 'column',
         justifyItems: 'center',
-        // minHeight: 0,
-        // height: '100%',
-        // scrollPaddingTop: '1vh',
     },
     projectItem:{
-        scrollSnapAlign: 'start',
         paddingTop: '70px',
-
         display: 'flex',
         flexDirection: 'column',
         alignContent: 'center',
@@ -152,7 +152,6 @@ function ProjectCard(props) {
     return (
         <Container 
             className={classes.projectItem}
-            // styles={{display: 'flex', justifyContent: "center", paddingTop: 70}} 
             id={project.id}
             ref={props.menuRef}
         >
@@ -170,7 +169,6 @@ function ProjectCard(props) {
                             variant='outlined'
                             disableElevation
                             startIcon={<GitHubIcon/>}
-                            // sx={{visiblity: 'hidden'}}
                             href={
                                 project.github2 !== null 
                                 ? 
