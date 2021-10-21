@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
-import { Toolbar, IconButton, Typography, Button, Link } from '@material-ui/core';
+import { Grid, Toolbar, IconButton, Typography, Button, Link } from '@material-ui/core';
 import Box from '@material-ui/core/Box'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -49,75 +49,75 @@ export default function Header(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" style={{ background: 'transparent', boxShadow: 'none', backdropFilter: 'blur(4px)'}}>
+            <AppBar position="fixed" style={{ background: 'transparent', boxShadow: 'none', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)'}}>
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        <Button onClick={props.switchMode}>
-                            {props.darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-                        </Button>
-                    </Typography>
-                    <Box sx={{flexGrow: 1}} />
-                    <Box>
-                        <Button 
-                            onClick={props.scrollToTop}
-                            style={{fontWeight: 500}}
-                        >
-                            About Me
-                        </Button>
-                        <Button 
-                            aria-controls="simple-menu" 
-                            aria-haspopup="true" 
-                            onClick={handleClick} 
-                            style={{fontWeight: 500}}
-                        >
-                            Projects
-                        </Button>
-                    </Box>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        {projListArray.map((text, index) => 
-                            <MenuItem 
-                                color='inherit' 
-                                button 
-                                component={Link} 
-                                // href={text.id} 
-                                key={index}
-                                onClick={() => props.scrollToProjRef(index)}
+                    <Grid item xs={2} sm={3} md={3} style={{display:'flex', flexFlow:'row nowrap', justifyContent: 'flex-start'}}>
+                        <Typography variant="h6" className={classes.title}>
+                            <Button onClick={props.switchMode}>
+                                {props.darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+                            </Button>
+                        </Typography>
+                    </Grid>
+                    <Box />
+                    <Grid item xs={6} sm={6} md={6} style={{display:'flex', flexFlow:'row nowrap', justifyContent: 'center'}} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        <Box>
+                            <Button 
+                                onClick={props.scrollToTop}
+                                style={{fontWeight: 500}}
                             >
-                                {text.name}
-                            </MenuItem>
-                        )}
-                    </Menu>
-                    <Box sx={{flexGrow: 1}} />
-                    <Box
-                        sx={{flexGrow: 1}}
-                    >
+                                About Me
+                            </Button>
+                            <Button 
+                                aria-controls="simple-menu" 
+                                aria-haspopup="true" 
+                                onClick={handleClick} 
+                                style={{fontWeight: 500}}
+                            >
+                                Projects
+                            </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            {projListArray.map((text, index) => 
+                                <MenuItem 
+                                    color='inherit' 
+                                    button 
+                                    component={Link} 
+                                    // href={text.id} 
+                                    key={index}
+                                    onClick={() => props.scrollToProjRef(index)}
+                                >
+                                    {text.name}
+                                </MenuItem>
+                            )}
+                        </Menu>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={4} sm={3} md={3} spacing={1} style={{display:'flex', flexFlow:'row nowrap', justifyContent: 'flex-end'}} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <IconButton
-                            // size="large"
-                            style={props.darkMode ? {color:'#fff'} : {color:'rgba(0, 0, 0, 0.87)'}}
+                            style={props.darkMode ? {color:'#fff', paddingRight: 0} : {color:'rgba(0, 0, 0, 0.87)', paddingRight: 0}}
                             href="https://github.com/stevopritchard"
                         >
                             <GitHub />
                         </IconButton>
                         <IconButton
                             // size="large"
-                            style={props.darkMode ? {color:'#fff'} : {color:'rgba(0, 0, 0, 0.87)'}}
+                            style={props.darkMode ? {color:'#fff', paddingRight: 0} : {color:'rgba(0, 0, 0, 0.87)', paddingRight: 0}}
                             href="https://www.linkedin.com/in/stevopritchard/"
                         >
                             <LinkedIn />
                         </IconButton>
                         <IconButton
                             // size="large"
-                            style={props.darkMode ? {color: '#fff'} : {color: 'rgba(0, 0, 0, 0.87)'}}
+                            style={props.darkMode ? {color: '#fff', paddingRight: 0} : {color: 'rgba(0, 0, 0, 0.87)', paddingRight: 0}}
                             href="mailto:stephen.a.pritchard@gmail.com"
                         >
                             <Mail />
                         </IconButton>
-                    </Box>
+                    </Grid>
                 </Toolbar>
             </AppBar>
         </div>
